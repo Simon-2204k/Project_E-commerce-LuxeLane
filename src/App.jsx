@@ -9,9 +9,10 @@ import HomeMen from "../src/components/home/HomeMen";
 import HomeWomen from "../src/components/home/HomeWomen";
 import HomeJewellary from "../src/components/home/HomeJewellary";
 import ProductdetailsPage from "./pages/ProductdetailsPage";
+
 const App = () => {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<PreLoaader />} />
         <Route path="/home" element={<Home />}></Route>
@@ -23,7 +24,7 @@ const App = () => {
         <Route path="/jewellary" element={<HomeJewellary />}></Route>
         <Route path="/productsdetails" element={<ProductdetailsPage />}></Route>
       </Routes>
-    </div>
+    </>
   );
 };
 
