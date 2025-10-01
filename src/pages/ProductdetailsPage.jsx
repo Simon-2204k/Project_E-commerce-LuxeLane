@@ -1,36 +1,36 @@
-import logo from "../../public/images/new.png";
+import logo from "../assets/images/new.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const ProductdetailsPage = () => {
-     const [activeTab, setActiveTab] = useState("description");
-      const [mainImg, setMainImg] = useState(
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=700&auto=format&fit=crop"
-      );
-    
-      const thumbs = [
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=300&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=301&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=302&auto=format&fit=crop",
-      ];
-  return (
-     <>
-  {/* Header */}
-<div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
-  <Link to="/home">
-    <img
-      src={logo}
-      className="h-[25vh] mt-3  -ml-9 object-contain" // logo taller than header
-      alt="luxelane"
-    />
-  </Link>
+  const [activeTab, setActiveTab] = useState("description");
+  const [mainImg, setMainImg] = useState(
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=700&auto=format&fit=crop"
+  );
 
-  <Link
-    to="/home"
-    className="text-black font-semibold hover:text-gray-700 transition"
-  >
-    ← Go to Home
-  </Link>
-</div>
+  const thumbs = [
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=300&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=301&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=302&auto=format&fit=crop",
+  ];
+  return (
+    <>
+      {/* Header */}
+      <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
+        <Link to="/home">
+          <img
+            src={logo}
+            className="h-[25vh] mt-3  -ml-9 object-contain" // logo taller than header
+            alt="luxelane"
+          />
+        </Link>
+
+        <Link
+          to="/home"
+          className="text-black font-semibold hover:text-gray-700 transition"
+        >
+          ← Go to Home
+        </Link>
+      </div>
 
       {/* Main content */}
       <div className="min-h-screen w-full py-12 px-6 font-font6">
@@ -78,7 +78,9 @@ const ProductdetailsPage = () => {
 
               <div className="space-y-4 mb-6">
                 <div>
-                  <label className="block font-medium mb-1 text-black">Size:</label>
+                  <label className="block font-medium mb-1 text-black">
+                    Size:
+                  </label>
                   <select className="border border-gray-400 rounded-md px-3 py-2 w-full md:w-48">
                     <option>Select a size</option>
                     <option>Small</option>
@@ -88,7 +90,9 @@ const ProductdetailsPage = () => {
                 </div>
 
                 <div>
-                  <label className="block font-medium mb-1 text-black">Quantity:</label>
+                  <label className="block font-medium mb-1 text-black">
+                    Quantity:
+                  </label>
                   <input
                     type="number"
                     defaultValue={1}
@@ -216,7 +220,7 @@ const ProductdetailsPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ProductdetailsPage
+export default ProductdetailsPage;

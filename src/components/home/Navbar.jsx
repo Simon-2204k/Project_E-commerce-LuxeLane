@@ -1,4 +1,4 @@
-import logo from "../../../public/images/new.png";
+import logo from "../../assets/images/new.png";
 import { LuShoppingCart } from "react-icons/lu";
 import { LuHeart } from "react-icons/lu";
 import { LuSearch } from "react-icons/lu";
@@ -8,8 +8,9 @@ const Navbar = () => {
     <header>
       <div className="fixed  top-0 h-[17vh] w-full">
         <div className="flex my-[0.5vh] items-center justify-between px-[2vw] ">
-          <Link to="/home"><img src={logo} className="h-[15vh]" alt="luxelane" /></Link>
-          
+          <Link to="/home">
+            <img src={logo} className="h-[15vh]" alt="luxelane" />
+          </Link>
 
           <div className="flex items-center space-x-[2vw]">
             <Link

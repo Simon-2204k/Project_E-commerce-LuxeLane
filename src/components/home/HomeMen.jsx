@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import logo from "../../../public/images/new.png";
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/new.png";
 const HomeMen = () => {
   return (
     <div>
-       <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
+      <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
         <Link to="/home">
           <img
             src={logo}
@@ -20,9 +20,9 @@ const HomeMen = () => {
           ← Go to Home
         </Link>
       </div>
-       <h1 className='text-9xl '>men</h1>
+      <h1 className="text-9xl ">men</h1>
     </div>
-  )
-}
+  );
+};
 
-export default HomeMen
+export default HomeMen;

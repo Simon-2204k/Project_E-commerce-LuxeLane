@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../../public/images/new.png";
+import logo from "../../assets/images/new.png";
 const HomeWomen = () => {
   return (
     <div>

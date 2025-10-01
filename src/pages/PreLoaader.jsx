@@ -1,8 +1,16 @@
 import { useRef } from "react";
-import video from "../assets/video.mp4";
+import video from "../assets/newVideo2.mp4";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useNavigate } from "react-router-dom";
+import img1 from "../assets/images/2.avif";
+import img2 from "../assets/images/3.avif";
+import img3 from "../assets/images/4.avif";
+import img4 from "../assets/images/5.avif";
+import img5 from "../assets/images/6.avif";
+import img6 from "../assets/images/7.avif";
+import img7 from "../assets/images/8.avif";
+import img8 from "../assets/images/9.avif";
 const PreLoaader = () => {
   const navigate = useNavigate();
 
@@ -10,13 +18,6 @@ const PreLoaader = () => {
     navigate("/home");
   };
   const preLoaderRef = useRef(null);
-
-  const text0Ref = useRef(null);
-  const text1Ref = useRef(null);
-
-  const text3Ref = useRef(null);
-  const text4Ref = useRef(null);
-  const text5Ref = useRef(null);
 
   const headingRef = useRef(null);
   const buttonRef = useRef(null);
@@ -33,44 +34,36 @@ const PreLoaader = () => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     tl.from(
-      [
-        text0Ref.current,
-        text1Ref.current,
-
-        text3Ref.current,
-        text4Ref.current,
-        text5Ref.current,
-      ],
+      headingLetters,
       {
-        y: 20,
-
+        y: -50,
         opacity: 0,
         duration: 0.5,
-        stagger: 0.3,
+        stagger: 0.05,
       },
-      "0.12"
+      "0"
     )
-      .from(
-        headingLetters,
-        {
-          y: -50,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.05,
-        },
-        "0"
-      )
       .from(buttonRef.current, {
         scale: 0,
         opacity: 0,
         duration: 0.5,
         ease: "back.out(1.7)",
-      });
+      })
+      .from(
+        ".grid img",
+        {
+          opacity: 0,
+          scale: 0.5,
+          stagger: 0.1,
+          duration: 0.6,
+        },
+        "-=0.3"
+      );
   });
 
   return (
     <div
-      ref={preLoaderRef} 
+      ref={preLoaderRef}
       className=" relative bg-black h-screen w-screen overflow-hidden"
     >
       <video
@@ -88,55 +81,62 @@ const PreLoaader = () => {
         {letters}
       </h1>
 
-      <div ref={text0Ref} className="w-1/5 absolute  top-5 right-[2%]">
-        <p className=" top-text text-white text-[10px] leading-relaxed font-[font1]">
-          Discover pieces that never go out of fashion. Our collection blends
-          classic silhouettes with modern details, creating outfits that feel
-          effortless yet refined. Each item is crafted to elevate your wardrobe
-          with a sense of elegance and individuality.
-        </p>
+      <div className="h-[50vh] w-[20vw] p-4 ">
+        <img
+          src={img1}
+          alt="1"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img2}
+          alt="2"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img3}
+          alt="3"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img4}
+          alt="4"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
       </div>
-      <div ref={text1Ref} className="w-1/5 absolute top-20 left-[1%]">
-        <p className=" top-text text-white text-[10px] leading-relaxed font-[font1]">
-          Style is confidence made visible. From casual chic to evening glam,
-          our pieces are designed to make you feel unstoppable, no matter where
-          you go. Comfort meets couture in every thread.
-        </p>
+      <div className="absolute  top-0 -right-[6vw] h-[50vh] w-[20vw] p-4 ">
+        <img
+          src={img8}
+          alt="1"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img7}
+          alt="2"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img6}
+          alt="3"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
+        <img
+          src={img5}
+          alt="4"
+          className="rotate-infinite w-[7vw] h-[7vw] md:w-[7vw] md:h-[7vw] sm:w-[10vw] sm:h-[10vw] object-cover rounded-full border-4 border-white"
+        />
       </div>
-
-      <div ref={text3Ref} className="w-1/5 absolute top-[50%] left-[70%]">
-        <p className="top-text text-white text-[10px] leading-relaxed font-[font1]">
-          Shopping is more than buying — it’s finding something that speaks to
-          your personality.
-        </p>
-      </div>
-      <div ref={text4Ref} className="w-1/5 absolute top-2 left-[50%]">
-        <p className="top-text text-white text-[10px] leading-relaxed font-[font1]">
-          Step into sophistication with fashion that feels as good as it looks.
-        </p>
-      </div>
-      <div ref={text5Ref} className="w-1/5 absolute top-[50%] left-[1%]">
-        <p className="top-text text-white text-[10px] leading-relaxed font-[font1]">
-          From effortless basics to statement pieces, discover fashion made for
-          you.
-        </p>
-      </div>
-
-     <div
+      <div
+        ref={buttonRef}
+        className="absolute right-[43%] bottom-[45%] h-[10vw] w-[20vw] bg-cover bg-center rounded-lg  flex justify-center items-center"
+      ></div>
+      <div
         ref={buttonRef}
         className="absolute right-[43%] bottom-[45%] h-[10vw] w-[20vw] bg-cover bg-center rounded-lg  flex justify-center items-center"
       >
-      <button
-          className=" enter-button
-    px-6 py-3 
-    text-white 
-    border-2 border-white 
-    font-bold 
-    uppercase 
-   h-full w-full
-   font-[font1]
-    
-  "    onClick={handleEnter}
+        <button
+          className=" enter-button px-6 py-3 text-white border-2 border-white font-bold uppercase 
+   h-full w-full font-[font1]"
+          onClick={handleEnter}
         >
           shop now
         </button>
