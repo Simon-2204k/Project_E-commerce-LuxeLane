@@ -2,14 +2,13 @@ import { useRef, useEffect } from "react";
 import video from "../assets/newVideo2.mp4";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
-import img1 from "../assets/images/2.avif";
+
 import img2 from "../assets/images/3.avif";
 import img3 from "../assets/images/4.avif";
 import img4 from "../assets/images/5.avif";
 import img5 from "../assets/images/6.avif";
 import img6 from "../assets/images/7.avif";
 import img7 from "../assets/images/8.avif";
-import img8 from "../assets/images/9.avif";
 
 const PreLoaader = () => {
   const navigate = useNavigate();
