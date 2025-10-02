@@ -6,7 +6,7 @@ const ProductCard = () => {
   return (
     <div>
       <div
-        className=" px-[0.1%] z-10 relative bg-amber-500 h-[70vh] w-[25vw] rounded-4xl  object-cover bg-cover bg-center bg-no-repeat"
+        className=" mx-3 my-10 px-[0.1%] z-10 relative bg-amber-500 h-[60vh] w-[25vw] rounded-4xl  object-cover bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
             "url('https://plus.unsplash.com/premium_photo-1672239496290-5061cfee7ebb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
@@ -32,9 +32,11 @@ const ProductCard = () => {
             CATEGORY : men's category{" "}
           </h3>
           <h3 className="font-[font5] text-1.5xl font-bold">COUNT : 120</h3>
-        <Link to="/productsdetails"><button className="cursor-pointer font-[font6] text-white bg-black rounded-2xl p-5 w-[99%]">
-            READ MORE
-          </button></Link>  
+          <Link to="/productsdetails">
+            <button className="cursor-pointer font-[font6] text-white bg-black rounded-2xl p-5 w-[99%]">
+              READ MORE
+            </button>
+          </Link>
         </div>
       </div>
     </div>

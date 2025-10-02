@@ -1,6 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/new.png";
+import Caurosel from "../Men/Caurosel";
 const HomeMen = () => {
   return (
     <div>
@@ -20,7 +20,8 @@ const HomeMen = () => {
           ← Go to Home
         </Link>
       </div>
-      <h1 className="text-9xl ">men</h1>
+
+      <Caurosel />
     </div>
   );
 };

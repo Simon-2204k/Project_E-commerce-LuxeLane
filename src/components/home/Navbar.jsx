@@ -4,6 +4,7 @@ import { LuHeart } from "react-icons/lu";
 import { LuSearch } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import AnimateHome from "./AnimateHome";
+
 const Navbar = () => {
   return (
     <>
