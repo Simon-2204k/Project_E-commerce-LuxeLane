@@ -117,7 +117,6 @@ const ProductdetailsPage = () => {
         </div>
       </div>
 
-      {/* Tabs Section */}
       <div className="max-w-screen-2xl -my-[5vw] bg-white rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.25)] overflow-hidden p-8">
         <div className="flex border-b border-gray-300 bg-gray-100 mt-12">
           {["description", "additional", "shipping", "reviews"].map((tab) => {

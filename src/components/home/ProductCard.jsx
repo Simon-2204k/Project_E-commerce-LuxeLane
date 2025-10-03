@@ -2,42 +2,53 @@ import { IoIosHeart } from "react-icons/io";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({ item }) => {
   return (
-    <div>
+    <div
+      className="mx-3 my-10 relative rounded-4xl bg-cover bg-center bg-no-repeat 
+  h-[60vh] w-full sm:w-[90%] md:w-[45%] lg:w-[25vw]"
+      style={{
+        backgroundImage: `url(${
+          item.image || "https://via.placeholder.com/400x600"
+        })`,
+      }}
+    >
       <div
-        className=" mx-3 my-10 px-[0.1%] z-10 relative bg-amber-500 h-[60vh] w-[25vw] rounded-4xl  object-cover bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://plus.unsplash.com/premium_photo-1672239496290-5061cfee7ebb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        }}
+        className="p-2 bg-amber-50 opacity-70 h-[6vh] rounded-2xl 
+    w-[30%] sm:w-[25%] md:w-[20%] lg:w-[10vw] 
+    text-center absolute top-[6%] left-[10%] text-xs sm:text-sm md:text-base"
       >
-        {/* <div><img src="https://plus.unsplash.com/premium_photo-1672239496290-5061cfee7ebb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" /></div> */}
-        <div className=" p-2 bg-amber-50 opacity-[0.7] h-[6vh] rounded-2xl w-[10vw] text-center absolute top-[6%] left-[10%] ">
-          rating : 4★
-        </div>
-        <button className=" z-20  cursor-pointer absolute text-5xl -top-5 -left-4  ">
-          <IoIosHeart />
-        </button>
-        <button className=" cursor-pointer absolute text-4xl right-5 top-5">
-          <CiCirclePlus className="text-white cursor-pointer " />
-        </button>
+        rating : {item.rating.rate}★
+      </div>
 
-        <div className=" p-[2vw] absolute bottom-0  h-[40%] w-[100%] rounded-4xl leading-[5vh]">
-          <h1 className="flex  font-[font5] text-2.5xl font-bold">
-            {" "}
-            TITLE : falverns
-          </h1>
-          <h3 className="font-[font5] text-1xl font-bold">
-            CATEGORY : men's category{" "}
-          </h3>
-          <h3 className="font-[font5] text-1.5xl font-bold">COUNT : 120</h3>
-          <Link to="/productsdetails">
-            <button className="cursor-pointer font-[font6] text-white bg-black rounded-2xl p-5 w-[99%]">
-              READ MORE
-            </button>
-          </Link>
-        </div>
+      {/* Heart Button */}
+      <button className="absolute -top-3 -left-3 text-3xl sm:text-4xl md:text-5xl z-20 cursor-pointer">
+        <IoIosHeart />
+      </button>
+
+      {/* Add Button */}
+      <button className="absolute right-3 top-3 text-3xl sm:text-4xl md:text-5xl cursor-pointer">
+        <CiCirclePlus className="text-white" />
+      </button>
+
+      <div className="text-white   p-3 sm:p-4 md:p-5 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-6 md:leading-7">
+        <h1 className="font-[font5] text-lg sm:text-xl md:text-2xl  font-bold">
+          TITLE : {item.title}
+        </h1>
+        <h3 className="font-[font5] text-sm sm:text-base md:text-lg font-bold">
+          CATEGORY : {item.category}
+        </h3>
+        <h3 className="font-[font5] text-sm sm:text-base md:text-lg font-bold">
+          COUNT : {item.rating.count}
+        </h3>
+        <Link to="/productsdetails">
+          <button
+            className="cursor-pointer font-[font6] text-white bg-black rounded-2xl mt-4
+        p-2 sm:p-3 md:p-4 w-full text-sm sm:text-base md:text-lg"
+          >
+            READ MORE
+          </button>
+        </Link>
       </div>
     </div>
   );
