@@ -1,7 +1,7 @@
 import logo from "../../assets/images/new.png";
 import { LuShoppingCart } from "react-icons/lu";
 import { LuHeart } from "react-icons/lu";
-import { LuSearch } from "react-icons/lu";
+
 import { Link } from "react-router-dom";
 import AnimateHome from "./AnimateHome";
 
@@ -60,16 +60,6 @@ const Navbar = () => {
               >
                 login
               </a>
-              <div className="flex relative">
-                <input
-                  type="text"
-                  className="h-[5vh] -mt-4 rounded-4xl text-center   font-[font3] font-medium"
-                  placeholder="search"
-                />{" "}
-                <div className="cursor-pointer text-[3vh] -top-2 absolute left-[2vw]  h-[8vh] w-[3vw]  rounded-full text-center">
-                  <LuSearch />
-                </div>
-              </div>
             </div>
           </div>
         </div>
