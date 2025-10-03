@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchE_commerceData } from "../../feature/Items";
+import { fetchE_commerceData } from "../../feature/ItemsSlice";
 
 const ProductList = () => {
   const dispatch = useDispatch();
