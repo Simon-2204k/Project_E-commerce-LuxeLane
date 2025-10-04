@@ -9,6 +9,7 @@ import HomeMen from "../src/components/home/HomeMen";
 import HomeWomen from "../src/components/home/HomeWomen";
 import HomeJewellary from "../src/components/home/HomeJewellary";
 import ProductdetailsPage from "./pages/ProductdetailsPage";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/electronic" element={<HomeElectronics />}></Route>
         <Route path="/jewellary" element={<HomeJewellary />}></Route>
         <Route path="/productsdetails" element={<ProductdetailsPage />}></Route>
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );

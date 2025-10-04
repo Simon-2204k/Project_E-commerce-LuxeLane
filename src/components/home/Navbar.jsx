@@ -87,12 +87,12 @@ const Navbar = () => {
             ref={loginRef}
           >
             <div className="flex items-center justify-between w-screen relative -top-7">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className=" mt-1 ml-[3vw] h-[5vh] underline rounded-4xl text-center text-[1.5vw]  font-[font3] font-medium"
               >
                 login
-              </a>
+              </Link>
             </div>
           </div>
         </div>
