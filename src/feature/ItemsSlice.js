@@ -7,7 +7,7 @@ export const fetchE_commerceData = createAsyncThunk(
   "fashion/fetchData",
   async () => {
     const res = await fetch(
-      "http://68dcc10a7cd1948060ab362d.mockapi.io/api/ecommerce/luxelune1/fashion"
+      "https://68dcc10a7cd1948060ab362d.mockapi.io/api/ecommerce/luxelune1/fashion"
     );
     const data = await res.json();
     return data;
