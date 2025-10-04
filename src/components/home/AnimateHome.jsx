@@ -27,15 +27,15 @@ const team = [
     trendHighlight: "Oversized silhouettes with minimalist finesse",
   },
   {
-    name: "Rohit",
+    name: "Sanjay",
     trendHighlight: "Retro sneakers paired with tailored streetwear",
   },
   {
-    name: "Karthik",
+    name: "Sunil",
     trendHighlight: "Art-deco prints reimagined for modern nights",
   },
   {
-    name: "Manoj",
+    name: "Ajay",
     trendHighlight: "Lightweight linen layers for breezy sophistication",
   },
   {
@@ -121,7 +121,7 @@ const AnimateHome = () => {
                       "https://images.unsplash.com/photo-1536766820879-059fec98ec0a?q=80&w=387&auto=format&fit=crop",
                       "https://images.unsplash.com/photo-1637975080219-1913dcff2110?q=80&w=387&auto=format&fit=crop",
                       "https://images.unsplash.com/photo-1649641988638-e683265dd9ca?q=80&w=464&auto=format&fit=crop",
-                      "https://images.unsplash.com/photo-1649641988638-e683265dd9ca?q=80&w=464&auto=format&fit=crop",
+                      "https://images.unsplash.com/photo-1606080261080-efee04387612?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       "https://images.unsplash.com/photo-1616404661184-67bc5d4da4f5?q=80&w=387&auto=format&fit=crop",
                       "https://images.unsplash.com/photo-1697319501786-8f5dc64326ad?q=80&w=464&auto=format&fit=crop",
                       "https://images.unsplash.com/photo-1664029248229-c1f6fdb4150e?q=80&w=387&auto=format&fit=crop",

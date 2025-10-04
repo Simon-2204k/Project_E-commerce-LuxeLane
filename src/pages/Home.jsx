@@ -1,11 +1,13 @@
 import Navbar from "../components/home/Navbar";
 import ProductList from "../components/home/ProductList";
 
+import FooterPanel from "../components/footer/FooterPanel";
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       <ProductList />
+      <FooterPanel></FooterPanel>
     </div>
   );
 };
