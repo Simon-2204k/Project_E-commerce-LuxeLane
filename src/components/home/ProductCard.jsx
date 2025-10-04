@@ -54,7 +54,8 @@ const ProductCard = ({ item }) => {
 
       <div className="text-white p-3 sm:p-4 md:p-5 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-6 md:leading-7 bg-black/50">
         <h1 className="font-[font5] text-lg sm:text-xl md:text-2xl font-bold">
-          TITLE : {item.title}
+          TITLE :{" "}
+          {item.title.length > 10 ? item.title.slice(0, 11) + ".." : item.title}
         </h1>
         <h3 className="font-[font5] text-sm sm:text-base md:text-lg font-bold">
           CATEGORY : {item.category}

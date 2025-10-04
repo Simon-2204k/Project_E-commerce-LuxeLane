@@ -4,13 +4,43 @@ import { LuHeart } from "react-icons/lu";
 
 import { Link } from "react-router-dom";
 import AnimateHome from "./AnimateHome";
-
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 const Navbar = () => {
+  const headerRef = useRef();
+  const loginRef = useRef();
+  useGSAP(function () {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(headerRef.current, {
+      backdropFilter: "blur(10px)brightness(1.2) contrast(120%)",
+
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top+=800% 80%",
+        scrub: true,
+      },
+    });
+    gsap.to(loginRef.current, {
+      display: "none",
+
+      scrollTrigger: {
+        trigger: loginRef.current,
+        start: "top+=800% 80%",
+        scrub: true,
+      },
+    });
+  });
   return (
     <>
       <header>
         <div className="fixed z-40 top-0 h-[17vh] w-full">
-          <div className="flex my-[0.5vh] items-center justify-between px-[2vw] ">
+          <div
+            className="flex my-[0.5vh] items-center justify-between px-[2vw]  "
+            ref={headerRef}
+          >
             <Link to="/home">
               <img src={logo} className="h-[15vh]" alt="luxelane" />
             </Link>
@@ -52,7 +82,10 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <div className="flex my-[0.5vh] items-center justify-between px-[2vw] ">
+          <div
+            className="flex my-[0.5vh] items-center justify-between px-[2vw] "
+            ref={loginRef}
+          >
             <div className="flex items-center justify-between w-screen relative -top-7">
               <a
                 href="#"
