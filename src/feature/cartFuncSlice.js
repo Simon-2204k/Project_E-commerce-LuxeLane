@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartItems: [],
+  cartItems: JSON.parse(localStorage.getItem("cartDetails")) || [],
 };
 
 const cartSliceFunction = createSlice({
@@ -13,16 +13,18 @@ const cartSliceFunction = createSlice({
         (item) => item.id === action.payload.id
       );
       if (existing) {
-        existing.quantity += action.payload.quantity; // respect payload
+        existing.quantity += action.payload.quantity;
       } else {
-        state.cartItems.push({ ...action.payload }); // assume payload already has quantity
+        state.cartItems.push({ ...action.payload });
       }
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems));
     },
 
     removeFunctionality: (state, action) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems));
     },
 
     increaseQuantity: (state, action) => {
@@ -30,6 +32,7 @@ const cartSliceFunction = createSlice({
         (item) => item.id === action.payload.id
       );
       if (item) item.quantity += 1;
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems));
     },
 
     decreaseQuantity: (state, action) => {
@@ -37,6 +40,7 @@ const cartSliceFunction = createSlice({
         (item) => item.id === action.payload.id
       );
       if (item && item.quantity > 1) item.quantity -= 1;
+      localStorage.setItem("cartDetails", JSON.stringify(state.cartItems));
     },
   },
 });
