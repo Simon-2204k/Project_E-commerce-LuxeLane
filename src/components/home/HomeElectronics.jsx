@@ -1,23 +1,26 @@
 import { IoIosHeart } from "react-icons/io";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "../../assets/images/new.png";
 import { addFunctionality } from "../../feature/cartFuncSlice";
 import { setSelectedProduct } from "../../feature/pageDetails";
 import { addToWishlist } from "../../feature/wishList";
-import { useDispatch } from "react-redux";
 
 const HomeElectronics = () => {
+  const dispatch = useDispatch();
+
+  // Fetch all items from redux store
   const homeElectronic = useSelector(
     (state) => state.itemsFetchedData.initialItems
   );
 
+  // Filter items to get only electronics category
   const electronicsItem = homeElectronic.filter(
     (items) => items.category === "electronics"
   );
-  const dispatch = useDispatch();
 
+  // Add to cart functionality
   const handleAddToCart = (elec) => {
     dispatch(
       addFunctionality({
@@ -27,17 +30,19 @@ const HomeElectronics = () => {
     );
   };
 
+  // Set selected product in redux for ProductDetails page
   const handleReadMore = (elec) => {
     dispatch(setSelectedProduct(elec));
   };
 
   return (
     <>
+      {/* Header with logo and home link */}
       <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10 z-50">
         <Link to="/home">
           <img
             src={logo}
-            className="h-[25vh] mt-3  -ml-9 object-contain"
+            className="h-[25vh] mt-3 -ml-9 object-contain"
             alt="luxelane"
           />
         </Link>
@@ -50,6 +55,7 @@ const HomeElectronics = () => {
         </Link>
       </div>
 
+      {/* Electronics products grid */}
       <div className="flex flex-wrap mt-15 justify-center">
         {electronicsItem.map((elec) => (
           <div
@@ -60,6 +66,7 @@ const HomeElectronics = () => {
               backgroundImage: `url(${elec.image})`,
             }}
           >
+            {/* Rating badge */}
             <div
               className="p-2 bg-amber-50 opacity-70 h-[6vh] rounded-2xl 
             w-[30%] sm:w-[25%] md:w-[20%] lg:w-[10vw] 
@@ -68,6 +75,7 @@ const HomeElectronics = () => {
               rating :{elec.rating.rate}★
             </div>
 
+            {/* Add to wishlist button */}
             <button
               className="absolute -top-3 -left-3 text-3xl sm:text-4xl md:text-5xl z-20 cursor-pointer"
               onClick={() => dispatch(addToWishlist(elec))}
@@ -75,6 +83,7 @@ const HomeElectronics = () => {
               <IoIosHeart />
             </button>
 
+            {/* Add to cart button */}
             <button
               className="absolute right-3 top-3 text-3xl sm:text-4xl md:text-5xl cursor-pointer"
               onClick={() => handleAddToCart(elec)}
@@ -82,6 +91,7 @@ const HomeElectronics = () => {
               <CiCirclePlus className="text-white" />
             </button>
 
+            {/* Product info overlay */}
             <div className="text-white p-3 sm:p-4 md:p-5 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-6 md:leading-7 bg-black/50 flex flex-col justify-between">
               <div>
                 <h1 className="font-[font5] text-lg sm:text-xl md:text-2xl font-bold">
@@ -98,6 +108,7 @@ const HomeElectronics = () => {
                 </h3>
               </div>
 
+              {/* Read More button */}
               <Link to="/productsdetails">
                 <button
                   className="cursor-pointer font-[font6] text-white bg-black rounded-2xl mt-4

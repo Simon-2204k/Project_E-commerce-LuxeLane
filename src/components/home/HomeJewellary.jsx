@@ -1,30 +1,36 @@
 import { IoIosHeart } from "react-icons/io";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "../../assets/images/new.png";
 import { addFunctionality } from "../../feature/cartFuncSlice";
 import { setSelectedProduct } from "../../feature/pageDetails";
 import { addToWishlist } from "../../feature/wishList";
-import { useDispatch } from "react-redux";
 
 const HomeJewellary = () => {
+  const dispatch = useDispatch();
+
+  // Fetch all items from Redux store
   const homeItems = useSelector((state) => state.itemsFetchedData.initialItems);
+
+  // Filter items to get only jewelry category
   const jewellaryItems = homeItems.filter(
     (item) => item.category === "jewelery"
   );
-  const dispatch = useDispatch();
 
+  // Add item to cart
   const handleAddToCart = (item) => {
     dispatch(addFunctionality({ ...item, quantity: 1 }));
   };
 
+  // Set selected product in Redux for ProductDetails page
   const handleReadMore = (item) => {
     dispatch(setSelectedProduct(item));
   };
 
   return (
     <>
+      {/* Header with logo and Home link */}
       <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10 z-50">
         <Link to="/home">
           <img
@@ -41,6 +47,7 @@ const HomeJewellary = () => {
         </Link>
       </div>
 
+      {/* Jewelry products grid */}
       <div className="flex flex-wrap mt-15 justify-center">
         {jewellaryItems.map((item) => (
           <div
@@ -48,10 +55,12 @@ const HomeJewellary = () => {
             className="mx-3 my-10 relative rounded-4xl bg-cover bg-center bg-no-repeat h-[60vh] w-full sm:w-[90%] md:w-[45%] lg:w-[25vw] shadow-lg"
             style={{ backgroundImage: `url(${item.image})` }}
           >
+            {/* Rating badge */}
             <div className="p-2 bg-amber-50 opacity-70 h-[6vh] rounded-2xl w-[30%] sm:w-[25%] md:w-[20%] lg:w-[10vw] text-center absolute top-[6%] left-[10%] text-xs sm:text-sm md:text-base">
               rating :{item.rating.rate}★
             </div>
 
+            {/* Add to wishlist button */}
             <button
               className="absolute -top-3 -left-3 text-3xl sm:text-4xl md:text-5xl z-20 cursor-pointer"
               onClick={() => dispatch(addToWishlist(item))}
@@ -59,6 +68,7 @@ const HomeJewellary = () => {
               <IoIosHeart />
             </button>
 
+            {/* Add to cart button */}
             <button
               className="absolute right-3 top-3 text-3xl sm:text-4xl md:text-5xl cursor-pointer"
               onClick={() => handleAddToCart(item)}
@@ -66,6 +76,7 @@ const HomeJewellary = () => {
               <CiCirclePlus className="text-white" />
             </button>
 
+            {/* Product info overlay */}
             <div className="text-white p-3 sm:p-4 md:p-5 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-6 md:leading-7 bg-black/50 flex flex-col justify-between">
               <div>
                 <h1 className="font-[font5] text-lg sm:text-xl md:text-2xl font-bold">
@@ -82,6 +93,7 @@ const HomeJewellary = () => {
                 </h3>
               </div>
 
+              {/* Read More button */}
               <Link to="/productsdetails">
                 <button
                   className="cursor-pointer font-[font6] text-white bg-black rounded-2xl mt-4 p-2 sm:p-3 md:p-4 w-full text-sm sm:text-base md:text-lg"

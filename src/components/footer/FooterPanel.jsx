@@ -1,3 +1,4 @@
+// Import social media icons and FAQ component
 import {
   FaInstagram,
   FaLinkedin,
@@ -6,12 +7,17 @@ import {
 } from "react-icons/fa6";
 import FooterFAQ from "./FooterFAQ";
 
+// FooterPanel component to display footer section with FAQ, about info, links, and social media
 const FooterPanel = () => {
   return (
     <>
       <footer className="bg-black text-white w-full">
+        {/* Collapsible FAQ section */}
         <FooterFAQ />
+
+        {/* About and Quick Links section */}
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-5 gap-6">
+          {/* About LUXELANE */}
           <div className="md:col-span-3 space-y-4">
             <h2 className="text-lg font-semibold">About LUXELANE</h2>
             <p className="text-sm text-gray-300">
@@ -25,6 +31,7 @@ const FooterPanel = () => {
             </p>
           </div>
 
+          {/* Quick links and social icons */}
           <div className="md:col-span-2 space-y-4">
             <h2 className="text-lg font-semibold">Quick Links</h2>
             <div className="grid grid-cols-2 gap-2 text-sm text-gray-300">
@@ -39,6 +46,7 @@ const FooterPanel = () => {
               </div>
             </div>
 
+            {/* Social media icons */}
             <div className="flex space-x-4 mt-2">
               <div className="hover:text-gray-400 cursor-pointer">
                 <FaFacebook />
@@ -56,15 +64,21 @@ const FooterPanel = () => {
           </div>
         </div>
 
+        {/* Footer bottom bar */}
         <div className="bg-black border-t border-gray-800 py-4">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm space-y-2 md:space-y-0">
+            {/* Logo and brand name */}
             <div className="flex items-center space-x-2">
               <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-1 rounded-full">
                 <span className="font-bold text-sm">L</span>
               </div>
               <span>LUXELANE</span>
             </div>
+
+            {/* Copyright */}
             <div>Copyright 2029© LUXELANE</div>
+
+            {/* Social icons repeated for bottom bar */}
             <div className="flex space-x-4">
               <div className="hover:text-gray-400 cursor-pointer">
                 <FaFacebook />

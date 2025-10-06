@@ -1,20 +1,28 @@
 import logo from "../assets/images/new.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addFunctionality } from "../feature/cartFuncSlice";
-import { useDispatch } from "react-redux";
+
 const ProductdetailsPage = () => {
   const dispatch = useDispatch();
+
+  // Get selected product details from Redux store
   const productDetails = useSelector((state) => state.product.selectedProduct);
+
+  const [activeTab, setActiveTab] = useState("description"); // Track active tab
+  const [quantity, setQuantity] = useState(1); // Quantity for cart
+
+  // Dispatch action to add product to cart
   const handleAddToCart = () => {
     dispatch(addFunctionality({ ...productDetails, quantity }));
   };
-  const [activeTab, setActiveTab] = useState("description");
-  const [quantity, setQuantity] = useState(1);
-  if (!productDetails) return null;
+
+  if (!productDetails) return null; // Guard clause if no product selected
+
   return (
     <>
+      {/* Header with logo and back to home link */}
       <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
         <Link to="/home">
           <img
@@ -32,9 +40,11 @@ const ProductdetailsPage = () => {
         </Link>
       </div>
 
+      {/* Main product details section */}
       <div className="min-h-screen w-full py-12 px-6 font-font6">
         <div className="max-w-screen-2xl mx-[7vw] my-[5vw] bg-white rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.25)] overflow-hidden p-8">
           <div className="flex flex-col lg:flex-row gap-12">
+            {/* Product image and branding */}
             <div className="flex flex-row gap-6">
               <div className="flex-1 w-[25vw]">
                 <img
@@ -51,6 +61,7 @@ const ProductdetailsPage = () => {
               </div>
             </div>
 
+            {/* Product info, price, description, options */}
             <div className="flex-1 mt-6 lg:mt-0 font-[font5]">
               <h1 className="text-3xl md:text-4xl font-font1 font-bold mb-2 text-black">
                 {productDetails.title}
@@ -62,6 +73,7 @@ const ProductdetailsPage = () => {
                 {productDetails.description}
               </p>
 
+              {/* Product size and quantity selection */}
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block font-medium mb-1 text-black">
@@ -89,10 +101,11 @@ const ProductdetailsPage = () => {
                 </div>
               </div>
 
+              {/* Action buttons */}
               <div className="flex flex-wrap gap-3 mb-6">
                 <button
                   className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition font-font5 font-semibold"
-                  onClick={handleAddToCart}
+                  onClick={handleAddToCart} // Add product to cart
                 >
                   Add to Cart
                 </button>
@@ -109,6 +122,7 @@ const ProductdetailsPage = () => {
         </div>
       </div>
 
+      {/* Tabs for Description & Shipping */}
       <div className="max-w-screen-2xl -my-[5vw] bg-white rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.25)] overflow-hidden p-8">
         <div className="flex border-b border-gray-300 bg-gray-100 mt-12">
           {["description", "shipping"].map((tab) => {
@@ -119,7 +133,7 @@ const ProductdetailsPage = () => {
             return (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => setActiveTab(tab)} // Switch active tab
                 className={`flex-1 py-4 text-center font-medium text-sm transition-all ${
                   activeTab === tab
                     ? "border-b-4 border-black text-black"
@@ -132,6 +146,7 @@ const ProductdetailsPage = () => {
           })}
         </div>
 
+        {/* Tab content */}
         <div className="p-8 space-y-6">
           {activeTab === "description" && (
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-300">

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
+// Team data with name and trend highlight
 const team = [
   {
     name: "Simon",
@@ -45,15 +46,16 @@ const team = [
 ];
 
 const AnimateHome = () => {
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const marqueeRef = useRef([]);
-  const imagesRef = useRef([]);
+  const [currentSlide, setCurrentSlide] = useState(1); // Track current slide
+  const marqueeRef = useRef([]); // Refs for marquee text elements
+  const imagesRef = useRef([]); // Refs for images
   const teamSlides = team.length;
 
+  // GSAP animation for slide reveal/hide
   const animationSlidesGsap = (idx, reveal) => {
     const clip = reveal
-      ? "polygon(0% 100%,100% 100%,100% 0%,0% 0%)"
-      : "polygon(0% 100%,100% 100%,100% 100%,0% 100%)";
+      ? "polygon(0% 100%,100% 100%,100% 0%,0% 0%)" // fully visible
+      : "polygon(0% 100%,100% 100%,100% 100%,0% 100%)"; // hidden
 
     gsap.to(marqueeRef.current[idx], {
       clipPath: clip,
@@ -68,14 +70,15 @@ const AnimateHome = () => {
     });
   };
 
+  // Event listener for clicking left/right to navigate slides
   useEffect(() => {
     const onClick = (dets) => {
       const halfWayScreen = window.innerWidth / 2;
       if (dets.clientX > halfWayScreen && currentSlide < teamSlides) {
-        animationSlidesGsap(currentSlide, true);
+        animationSlidesGsap(currentSlide, true); // reveal next slide
         setCurrentSlide((s) => s + 1);
       } else if (dets.clientX <= halfWayScreen && currentSlide > 1) {
-        animationSlidesGsap(currentSlide - 1, false);
+        animationSlidesGsap(currentSlide - 1, false); // hide previous slide
         setCurrentSlide((s) => s - 1);
       }
     };
@@ -84,7 +87,7 @@ const AnimateHome = () => {
     return () => document.removeEventListener("click", onClick);
   }, [currentSlide]);
 
-  const currentName = team[currentSlide - 1];
+  const currentName = team[currentSlide - 1]; // Current team member
 
   return (
     <div className="animateHome">

@@ -1,7 +1,6 @@
+// Import all required page components (default exports assumed)
 import PreLoaader from "./pages/PreLoaader";
 import Home from "./pages/Home";
-
-import { Route, Routes } from "react-router-dom";
 import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
 import HomeElectronics from "../src/components/home/HomeElectronics";
@@ -11,19 +10,36 @@ import HomeJewellary from "../src/components/home/HomeJewellary";
 import ProductdetailsPage from "./pages/ProductdetailsPage";
 import LoginPage from "./pages/LoginPage";
 
+// React Router imports to handle navigation between pages
+import { Route, Routes } from "react-router-dom";
+
 const App = () => {
   return (
     <>
+      {/* Define all application routes */}
       <Routes>
+        {/* Landing/Preloader page */}
         <Route path="/" element={<PreLoaader />} />
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/wishlist" element={<WishList />}></Route>
-        <Route path="/men" element={<HomeMen />}></Route>
-        <Route path="/women" element={<HomeWomen />}></Route>
-        <Route path="/electronic" element={<HomeElectronics />}></Route>
-        <Route path="/jewellary" element={<HomeJewellary />}></Route>
-        <Route path="/productsdetails" element={<ProductdetailsPage />}></Route>
+
+        {/* Home page for all users */}
+        <Route path="/home" element={<Home />} />
+
+        {/* Cart page showing added items */}
+        <Route path="/cart" element={<Cart />} />
+
+        {/* Wishlist page */}
+        <Route path="/wishlist" element={<WishList />} />
+
+        {/* Category pages */}
+        <Route path="/men" element={<HomeMen />} />
+        <Route path="/women" element={<HomeWomen />} />
+        <Route path="/electronic" element={<HomeElectronics />} />
+        <Route path="/jewellary" element={<HomeJewellary />} />
+
+        {/* Product details page */}
+        <Route path="/productsdetails" element={<ProductdetailsPage />} />
+
+        {/* Login page */}
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
