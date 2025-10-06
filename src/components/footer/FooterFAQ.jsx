@@ -37,14 +37,14 @@ const FooterFAQ = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-12">
       {/* Section heading */}
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 text-center">
         Frequently Asked Questions
       </h2>
 
       {/* FAQ items */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
@@ -53,17 +53,19 @@ const FooterFAQ = () => {
             {/* FAQ question button */}
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full flex justify-between items-center px-6 py-4 text-left focus:outline-none hover:bg-gray-800 transition"
+              className="w-full flex justify-between items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-left focus:outline-none hover:bg-gray-800 transition"
             >
-              <span className="font-semibold">{faq.question}</span>
-              <span>
+              <span className="font-semibold text-sm sm:text-base md:text-lg">
+                {faq.question}
+              </span>
+              <span className="text-sm sm:text-base md:text-lg">
                 {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </button>
 
             {/* FAQ answer displayed only if this item is open */}
             {openIndex === index && (
-              <div className="px-6 py-4 border-t border-gray-700 text-gray-300">
+              <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-t border-gray-700 text-gray-300 text-sm sm:text-base md:text-lg">
                 {faq.answer}
               </div>
             )}
@@ -74,5 +76,4 @@ const FooterFAQ = () => {
   );
 };
 
-// Export component for use in footer or pages
 export default FooterFAQ;

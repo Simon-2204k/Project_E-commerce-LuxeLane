@@ -9,10 +9,8 @@ import logo from "../assets/images/new.png";
 const WishList = () => {
   const dispatch = useDispatch();
 
-  // Get wishlist items from Redux store
   const wishlist = useSelector((state) => state.wishlist.items);
 
-  // Set selected product in Redux for details page
   const handleReadMore = (item) => {
     dispatch(setSelectedProduct(item));
   };
@@ -48,26 +46,23 @@ const WishList = () => {
           </Link>
         </div>
 
-        <div className="max-w-screen-2xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden p-8">
-          <h1 className="font-[font1] text-3xl md:text-4xl font-bold mb-8 text-black">
+        <div className="max-w-screen-2xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden p-8 sm:p-6">
+          <h1 className="font-[font1] text-3xl md:text-4xl sm:text-2xl font-bold mb-8 text-black">
             My Wishlist
           </h1>
 
           {/* Wishlist grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {wishlist.length === 0 ? (
-              // Display message if wishlist is empty
               <p className="text-center col-span-full text-gray-500">
                 Your wishlist is empty.
               </p>
             ) : (
-              // Map through wishlist items
               wishlist.map((item) => (
                 <div
                   key={item.id}
                   className="bg-white rounded-xl shadow-md overflow-hidden relative hover:shadow-xl transition transform hover:-translate-y-1"
                 >
-                  {/* Product image */}
                   <img
                     src={item.image}
                     alt={item.title}
@@ -75,12 +70,10 @@ const WishList = () => {
                   />
 
                   <div className="p-4">
-                    {/* Product title */}
-                    <h2 className="font-[font3] text-lg font-semibold mb-2 text-black">
+                    <h2 className="font-[font3] text-lg sm:text-base md:text-lg font-semibold mb-2 text-black">
                       {item.title}
                     </h2>
 
-                    {/* Product rating badge */}
                     <div
                       className="p-2 bg-amber-50 opacity-70 h-[6vh] rounded-2xl 
           w-[30%] sm:w-[25%] md:w-[20%] lg:w-[10vw] 
@@ -89,27 +82,24 @@ const WishList = () => {
                       rating : {item.rating.rate}★
                     </div>
 
-                    {/* Product price */}
                     <p className="text-black font-bold mb-2 text-sm sm:text-base md:text-base">
                       ${item.price}
                     </p>
 
-                    {/* Action buttons: Remove & Refer-More */}
                     <div className="flex justify-between items-center gap-2">
                       <button
                         onClick={() =>
                           dispatch(removeFromWishlist({ id: item.id }))
-                        } // Remove item from wishlist
+                        }
                         className="text-black flex items-center gap-1 sm:gap-2 text-sm sm:text-base hover:text-gray-600 transition"
                       >
                         <FaTrash className="sm:text-base text-sm" /> Remove
                       </button>
 
-                      {/* Navigate to product details and set selected product */}
                       <Link to="/productsdetails">
                         <button
                           className="bg-black text-white px-2 py-1 sm:px-4 sm:py-2 rounded-md text-sm sm:text-base hover:bg-gray-800 transition font-semibold"
-                          onClick={handleReadMore(item)}
+                          onClick={() => handleReadMore(item)}
                         >
                           Refer-More
                         </button>

@@ -1,10 +1,10 @@
-import { IoIosHeart } from "react-icons/io";
-import { CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
-import { addFunctionality } from "../../feature/cartFuncSlice";
-import { setSelectedProduct } from "../../feature/pageDetails";
-import { addToWishlist } from "../../feature/wishList";
-import { useDispatch } from "react-redux";
+import { IoIosHeart } from "react-icons/io"; // Heart icon for wishlist
+import { CiCirclePlus } from "react-icons/ci"; // Plus icon for add-to-cart
+import { Link } from "react-router-dom"; // For navigation
+import { addFunctionality } from "../../feature/cartFuncSlice"; // Redux action to add to cart
+import { setSelectedProduct } from "../../feature/pageDetails"; // Redux action to set selected product
+import { addToWishlist } from "../../feature/wishList"; // Redux action to add to wishlist
+import { useDispatch } from "react-redux"; // Redux hook
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -58,26 +58,27 @@ const ProductCard = ({ item }) => {
       </button>
 
       {/* Product info overlay */}
-      <div className="text-white p-3 sm:p-4 md:p-5 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-6 md:leading-7 bg-black/50">
+      <div className="text-white p-2 sm:p-3 md:p-4 absolute bottom-0 h-[40%] w-full rounded-4xl leading-tight sm:leading-5 md:leading-6 bg-black/50 flex flex-col justify-between">
         {/* Product title */}
-        <h1 className="font-[font5] text-lg sm:text-xl md:text-2xl font-bold">
+        <h1 className="font-[font5] text-base sm:text-lg md:text-xl font-bold">
           TITLE :{" "}
           {item.title.length > 10 ? item.title.slice(0, 11) + ".." : item.title}
         </h1>
+
         {/* Product category */}
-        <h3 className="font-[font5] text-sm sm:text-base md:text-lg font-bold">
+        <h3 className="font-[font5] text-xs sm:text-sm md:text-base font-bold">
           CATEGORY : {item.category}
         </h3>
+
         {/* Rating count */}
-        <h3 className="font-[font5] text-sm sm:text-base md:text-lg font-bold">
+        <h3 className="font-[font5] text-xs sm:text-sm md:text-base font-bold">
           COUNT : {item.rating.count}
         </h3>
 
-        {/* Read more button to navigate to product details page */}
+        {/* Read more button */}
         <Link to="/productsdetails">
           <button
-            className="cursor-pointer font-[font6] text-white bg-black rounded-2xl mt-4
-              p-2 sm:p-3 md:p-4 w-full text-sm sm:text-base md:text-lg"
+            className="cursor-pointer font-[font6] text-white bg-black rounded-2xl mt-2 sm:mt-3 md:mt-4 p-1 sm:p-2 md:p-3 w-full text-xs sm:text-sm md:text-base"
             onClick={handleReadMore}
           >
             READ MORE

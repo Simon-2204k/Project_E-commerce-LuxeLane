@@ -126,11 +126,16 @@ const PreLoaader = () => {
       {/* "Shop Now" button */}
       <div
         ref={buttonRef}
-        className="absolute right-[43%] bottom-[45%] h-[10vw] w-[20vw] flex justify-center items-center"
+        className="absolute right-[43%] bottom-[45%] flex justify-center items-center"
       >
         <button
           onClick={handleEnter} // Navigate to Home page
-          className="enter-button px-6 py-3 text-white border-2 border-white font-bold uppercase h-full w-full font-[font1]"
+          className="
+      enter-button px-6 py-3 text-white border-2 border-white font-bold uppercase font-[font1]
+      w-[20vw] h-[10vw] text-[1.5rem]          
+      md:w-[20vw] md:h-[10vw] md:text-[1rem] 
+      sm:w-[16vw] sm:h-[8vw] sm:text-[0.5em] sm:-mt-2
+    "
         >
           Shop Now
         </button>
