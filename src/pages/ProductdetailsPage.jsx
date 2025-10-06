@@ -3,25 +3,35 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addFunctionality } from "../feature/cartFuncSlice";
+import { addToWishlist } from "../feature/wishList"; // ✅ Import wishlist action
 
 const ProductdetailsPage = () => {
   const dispatch = useDispatch();
 
+  // Get the selected product from Redux
   const productDetails = useSelector((state) => state.product.selectedProduct);
 
-  const [activeTab, setActiveTab] = useState("description"); // Track active tab
-  const [quantity, setQuantity] = useState(1); // Track quantity
+  // Local state
+  const [activeTab, setActiveTab] = useState("description");
+  const [quantity, setQuantity] = useState(1);
 
+  // Guard clause if no product is selected
+  if (!productDetails) return null;
+
+  // Add to Cart handler
   const handleAddToCart = () => {
-    dispatch(addFunctionality({ ...productDetails, quantity })); // Add product to cart
+    dispatch(addFunctionality({ ...productDetails, quantity }));
   };
 
-  if (!productDetails) return null; // Guard clause
+  // Add to Wishlist handler
+  const handleAddToWishlist = () => {
+    dispatch(addToWishlist(productDetails));
+  };
 
   return (
     <>
-      {/* Header with logo and back link */}
-      <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10">
+      {/* Header */}
+      <div className="fixed top-0 w-screen h-[10vh] overflow-hidden backdrop-blur-md flex justify-between items-center bg-white/20 border-b border-gray-300 px-10 z-50">
         <Link to="/home">
           <img
             src={logo}
@@ -29,7 +39,6 @@ const ProductdetailsPage = () => {
             alt="luxelane"
           />
         </Link>
-
         <Link
           to="/home"
           className="text-black font-semibold hover:text-gray-700 transition"
@@ -38,11 +47,11 @@ const ProductdetailsPage = () => {
         </Link>
       </div>
 
-      {/* Main product details section */}
+      {/* Main Product Section */}
       <div className="min-h-screen w-full py-12 px-6 font-font6">
         <div className="max-w-screen-2xl mx-[7vw] my-[5vw] bg-white rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.25)] overflow-hidden p-8 sm:mr-[2vw] md:mr-[4vw]">
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Product image and branding */}
+            {/* Product Image & Branding */}
             <div className="flex flex-row gap-6">
               <div className="flex-1 w-[25vw]">
                 <img
@@ -51,7 +60,6 @@ const ProductdetailsPage = () => {
                   className="w-[35vw] rounded-xl shadow-lg border border-gray-300 md:w-[30vw] sm:w-[45vw]"
                 />
               </div>
-
               <div className="flex items-center bg-black justify-center w-[25vw] md:w-[20vw] sm:w-[18vw]">
                 <h1 className="font-[font3] text-[12vh] md:text-[9vh] sm:text-[7vh] xs:text-[20px] text-white rotate-90">
                   LUXELANE
@@ -59,7 +67,7 @@ const ProductdetailsPage = () => {
               </div>
             </div>
 
-            {/* Product info, price, description */}
+            {/* Product Info */}
             <div className="flex-1 mt-6 lg:mt-0 font-[font5]">
               <h1 className="text-3xl md:text-2xl sm:text-xl lg:text-4xl font-font1 font-bold mb-2 text-black">
                 {productDetails.title}
@@ -73,7 +81,7 @@ const ProductdetailsPage = () => {
                 {productDetails.description}
               </p>
 
-              {/* Size and quantity selection */}
+              {/* Size & Quantity */}
               <div className="space-y-4 mb-6">
                 <div>
                   <label className="block font-medium mb-1 text-black">
@@ -86,7 +94,6 @@ const ProductdetailsPage = () => {
                     <option>Large</option>
                   </select>
                 </div>
-
                 <div>
                   <label className="block font-medium mb-1 text-black">
                     Quantity:
@@ -101,15 +108,18 @@ const ProductdetailsPage = () => {
                 </div>
               </div>
 
-              {/* Action buttons */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap gap-3 mb-6">
                 <button
                   className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition font-font5 font-semibold text-sm sm:text-xs"
-                  onClick={handleAddToCart} // Add to cart
+                  onClick={handleAddToCart}
                 >
                   Add to Cart
                 </button>
-                <button className="bg-gray-200 px-6 py-3 rounded-md hover:bg-gray-300 transition text-sm sm:text-xs">
+                <button
+                  className="bg-gray-200 px-6 py-3 rounded-md hover:bg-gray-300 transition text-sm sm:text-xs"
+                  onClick={handleAddToWishlist} // ✅ Add to wishlist
+                >
                   Add to Wishlist
                 </button>
               </div>
@@ -122,7 +132,7 @@ const ProductdetailsPage = () => {
         </div>
       </div>
 
-      {/* Tabs for Description & Shipping */}
+      {/* Tabs */}
       <div className="max-w-screen-2xl -my-[5vw] bg-white rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.25)] overflow-hidden p-8">
         <div className="flex border-b border-gray-300 bg-gray-100 mt-12">
           {["description", "shipping"].map((tab) => {
@@ -133,7 +143,7 @@ const ProductdetailsPage = () => {
             return (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)} // Switch active tab
+                onClick={() => setActiveTab(tab)}
                 className={`flex-1 py-4 text-center font-medium text-sm transition-all ${
                   activeTab === tab
                     ? "border-b-4 border-black text-black"
@@ -157,7 +167,6 @@ const ProductdetailsPage = () => {
               </p>
             </div>
           )}
-
           {activeTab === "shipping" && (
             <div className="bg-white p-6 rounded-xl shadow-md border border-gray-300">
               <h2 className="text-2xl md:text-xl sm:text-lg font-font4 font-semibold text-black mb-4">
