@@ -7,15 +7,15 @@ import { addFunctionality } from "../../feature/cartFuncSlice"; // Redux action 
 import { setSelectedProduct } from "../../feature/pageDetails"; // Redux action to store selected product
 import { addToWishlist } from "../../feature/wishList"; // Redux action to add to wishlist
 
-const HomeJewellary = () => {
+const HomeMen = () => {
   const dispatch = useDispatch();
 
   // Fetch all items from Redux store
   const homeItems = useSelector((state) => state.itemsFetchedData.initialItems);
 
-  // Filter items to get only jewelry category
-  const jewellaryItems = homeItems.filter(
-    (item) => item.category === "jewelery"
+  // Filter items to get only men's clothing category
+  const menItems = homeItems.filter(
+    (item) => item.category === "men's clothing"
   );
 
   // Add item to cart
@@ -47,9 +47,9 @@ const HomeJewellary = () => {
         </Link>
       </div>
 
-      {/* Jewelry products grid */}
+      {/* Men's clothing products grid */}
       <div className="flex flex-wrap mt-16 justify-center">
-        {jewellaryItems.map((item) => (
+        {menItems.map((item) => (
           <div
             key={item.id}
             className="mx-3 my-10 relative rounded-4xl bg-cover bg-center bg-no-repeat h-[60vh] w-full sm:w-[90%] md:w-[45%] lg:w-[25vw] shadow-lg"
@@ -110,4 +110,4 @@ const HomeJewellary = () => {
   );
 };
 
-export default HomeJewellary;
+export default HomeMen;
