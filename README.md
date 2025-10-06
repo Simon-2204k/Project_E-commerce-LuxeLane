@@ -114,4 +114,4 @@
     - Mock API and GSAP animations improve realism and interactivity.  
     - Demonstrates expertise in modern frontend development, state management, and responsive design.
 
-
+LINK FOR WEBSITE : https://luxelane-fashion-hub.netlify.app
